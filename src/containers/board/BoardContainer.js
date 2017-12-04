@@ -18,6 +18,7 @@ class BoardContainer extends React.Component {
 
 BoardContainer.propTypes = {
   boardsCollection: PropTypes.array.isRequired,
+  actions: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ({ boardsCollection }) => ({

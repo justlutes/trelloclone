@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import BoardTitleForm from '../atoms/BoardTitleForm';
@@ -33,6 +34,11 @@ class ActiveCreateBoard extends React.Component {
     );
   }
 }
+
+ActiveCreateBoard.propsTypes = {
+  cancelCreatingBoard: PropTypes.func.isRequired,
+  submitNewBoard: PropTypes.func.isRequired,
+};
 
 const Wrapper = styled.div`
   width: 345px;

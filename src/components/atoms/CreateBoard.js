@@ -1,11 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-export default ({ create }) => (
+const CreateBoard = ({ create }) => (
   <Wrapper onClick={() => create()}>
     <Text>Create a new board...</Text>
   </Wrapper>
 );
+
+CreateBoard.proptypes = {
+  create: PropTypes.func.isRequired,
+};
 
 const Wrapper = styled.div`
   width: 345px;
@@ -34,3 +39,5 @@ const Text = styled.div`
   color: #fff;
   text-transform: uppercase;
 `;
+
+export default CreateBoard;

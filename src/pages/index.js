@@ -5,7 +5,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 
 import BoardContainer from '../containers/board/BoardContainer';
 import Header from '../components/molecules/Header';
-import ShowActiveBoard from '../containers/board/ActiveBoard';
+import ActiveBoardContainer from '../containers/board/ActiveBoardContainer';
 import NotFound from './NotFound';
 
 // @DragDropContext(HTML5Backend)
@@ -16,7 +16,7 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact path="/" component={BoardContainer} />
-          <Route path="/board/:id" component={ShowActiveBoard} />
+          <Route path="/board/:id" component={ActiveBoardContainer} />
           <Route component={NotFound} />
         </Switch>
       </div>

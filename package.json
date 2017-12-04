@@ -7,6 +7,7 @@
     "babel-core": "^6.26.0",
     "jest": "^21.2.1",
     "lodash": "^4.17.4",
+    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dnd": "^2.5.4",
     "react-dnd-html5-backend": "^2.5.4",
@@ -42,7 +43,6 @@
     "babel-eslint": "^8.0.3",
     "eslint": "^4.12.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "prop-types": "^15.6.0"
+    "eslint-plugin-import": "^2.8.0"
   }
 }

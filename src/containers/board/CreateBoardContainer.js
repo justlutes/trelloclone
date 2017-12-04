@@ -20,6 +20,7 @@ class CreateBoardContainer extends React.Component {
 
 CreateBoardContainer.propTypes = {
   newBoard: PropTypes.object,
+  actions: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = ({ newBoard }) => ({

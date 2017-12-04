@@ -1,15 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import animation from '../../utils/Animation';
 
-export default ({ id, title }) => (
+const Board = ({ id, title }) => (
   <Link to={`/board/${id}`}>
     <BoardWrapper>
       <Title>{title}</Title>
     </BoardWrapper>
   </Link>
 );
+
+Board.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
 
 const Title = styled.h2`
   color: black;
@@ -41,3 +47,5 @@ const BoardWrapper = styled.div`
     transform: scale(1.1);
   }
 `;
+
+export default Board;
