@@ -1,0 +1,11 @@
+{
+  "extends": ["eslint-config-airbnb-base"],
+  "parser": "babel-eslint",
+  "globals": {
+    "document": true,
+    "localStorage": true
+  },
+  "rules": {
+    "class-methods-use-this": 0
+  }
+}

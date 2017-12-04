@@ -4,9 +4,21 @@
   "description": "Trello clone using React + Redux",
   "private": false,
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "jest": "^21.2.1",
+    "lodash": "^4.17.4",
     "react": "^16.2.0",
+    "react-dnd": "^2.5.4",
+    "react-dnd-html5-backend": "^2.5.4",
     "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17"
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-form": "^7.2.0",
+    "redux-thunk": "^2.2.0",
+    "styled-components": "^2.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,5 +35,12 @@
   "bugs": {
     "url": "https://github.com/klutes90/trelloclone/issues"
   },
-  "homepage": "https://github.com/klutes90/trelloclone#readme"
+  "homepage": "https://github.com/klutes90/trelloclone#readme",
+  "devDependencies": {
+    "babel-eslint": "^8.0.3",
+    "eslint": "^4.12.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "prop-types": "^15.6.0"
+  }
 }
