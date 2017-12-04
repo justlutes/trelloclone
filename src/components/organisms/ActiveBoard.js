@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import CurrentBoardTitle from '../atoms/CurrentBoardTitle';
 import ListWrapper from '../atoms/ListWrapper';
-import ListEditingMode from '../molecules/ListEditingMode';
+import ListEditingContainer from '../../containers/card/ListEditingContainer';
 import ListItemsContainer from '../organisms/ListItemsContainer';
 import CreateNewList from '../atoms/CreateNewList';
 
@@ -40,8 +40,8 @@ class ActiveBoard extends React.Component {
         <CurrentBoardTitle>{this.getTitle()}</CurrentBoardTitle>
         <ListWrapper>
           <ListItemsContainer activeBoardData={activeBoardData} />
-          {activeBoard.isEditingList ? (
-            <ListEditingMode onSubmit={this.handleListSubmit} />
+          {activeBoard.isEditing ? (
+            <ListEditingContainer onSubmit={this.handleListSubmit} />
           ) : (
             <CreateNewList addList={enableListEditMode} />
           )}
