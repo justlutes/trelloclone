@@ -1,4 +1,10 @@
-export const loadState = async () => JSON.parse(localStorage.getItem('boardsCollection'));
+export const loadState = () => {
+  try {
+    return JSON.parse(localStorage.getItem('boardsCollection'));
+  } catch (err) {
+    return undefined;
+  }
+};
 
 export const saveState = (boards) => {
   try {

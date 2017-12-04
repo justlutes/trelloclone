@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 
-import BoardContainer from '../containers/board/Board';
+import BoardContainer from '../containers/board/BoardContainer';
 import Header from '../components/molecules/Header';
 import ShowActiveBoard from '../containers/board/ActiveBoard';
 import NotFound from './NotFound';

@@ -1,13 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import animation from '../../utils/Animation';
 
-import CreateBoard from '../molecules/CreateBoard';
+import CreateBoardContainer from '../../containers/board/CreateBoardContainer';
+import Board from '../atoms/Board';
 
-const BoardCollection = ({ boardCollection = [] }) => (
+const BoardCollection = ({ boardsCollection }) => (
   <Wrapper>
-    <CreateBoard />
-    {boardCollection.map(board => <div key={board.id}>Test</div>)}
+    <CreateBoardContainer />
+    {boardsCollection.map(board => <Board key={board.id} title={board.title} id={board.id} />)}
   </Wrapper>
 );
 
@@ -17,5 +19,9 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   animation: ${animation} 300ms linear;
 `;
+
+BoardCollection.propTypes = {
+  boardsCollection: PropTypes.array.isRequired,
+};
 
 export default BoardCollection;

@@ -1,4 +1,4 @@
-import { STORE_NEW_BOARD_TO_COLLECTION } from '../constants';
+import { STORE_NEW_BOARD_TO_COLLECTION } from '../../constants';
 
 const initialState = [];
 

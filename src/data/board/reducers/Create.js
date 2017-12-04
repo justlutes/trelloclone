@@ -1,6 +1,6 @@
-import uniqueId from 'lodash/uniqueId';
+import uuid from 'uuid/v4';
 
-import { CREATE_NEW_BOARD, CANCEL_NEW_BOARD, SUBMIT_NEW_BOARD } from '../constants';
+import { CREATE_NEW_BOARD, CANCEL_NEW_BOARD, SUBMIT_NEW_BOARD } from '../../constants';
 
 const initialState = {
   open: false,
@@ -23,7 +23,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         title: null,
-        isBoardOpen: false,
+        open: false,
         id: null,
         success: false,
       };
@@ -32,7 +32,7 @@ export default function (state = initialState, action) {
         ...state,
         open: false,
         title: action.payload,
-        id: uniqueId(''),
+        id: uuid(),
       };
     default:
       return state;

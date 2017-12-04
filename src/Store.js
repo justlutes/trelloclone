@@ -1,14 +1,20 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import throttle from 'lodash/throttle';
 import RootReducer from './data';
 import { loadState, saveState } from './utils/SyncBoardCollection';
 
-const middleware = applyMiddleware(thunk);
+const middlewaresDev = [reduxImmutableStateInvariant(), thunk];
 const persistedState = loadState();
 
-const Store = createStore(RootReducer, persistedState, composeWithDevTools(middleware));
+const StoreDev = () =>
+  createStore(RootReducer, persistedState, composeWithDevTools(applyMiddleware(...middlewaresDev)));
+const StoreProd = () =>
+  createStore(RootReducer, persistedState, composeWithDevTools(applyMiddleware(thunk)));
+
+const Store = process.env.NODE_ENV === 'production' ? StoreProd() : StoreDev();
 
 Store.subscribe(throttle(() => {
   saveState({

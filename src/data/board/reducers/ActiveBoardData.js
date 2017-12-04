@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import uniqueId from 'lodash/uniqueId';
-import { SUBMIT_LIST, SUBMIT_NEW_CARD, HANDLE_DROP, ARCHIVE_POST } from '../constants';
+import uuid from 'uuid/v4';
+import { SUBMIT_LIST, SUBMIT_NEW_CARD, HANDLE_DROP, ARCHIVE_POST } from '../../constants';
 
 const ListReducer = (state = {}, action) => {
   switch (action.type) {
     case SUBMIT_LIST: {
-      const listId = uniqueId('list_');
+      const listId = uuid();
       return {
         ...state,
         [listId]: {
