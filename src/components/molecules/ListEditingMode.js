@@ -1,9 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Field } from 'redux-form';
+import Input from '../atoms/BoardTitleInput';
+import DisableListEditMode from '../atoms/DisableListEditMode';
 
 class ListEditingMode extends React.Component {
   render() {
-    return <p>test</p>;
+    const { disableListEditMode, handleSubmit } = this.props;
+    return (
+      <ListEditingModeWrapper>
+        <form onSubmit={handleSubmit}>
+          <Field name="listItem" component={Input} type="text" placeholder="Add a list" />
+        </form>
+        <DisableListEditMode disable={disableListEditMode} />
+      </ListEditingModeWrapper>
+    );
   }
 }
 

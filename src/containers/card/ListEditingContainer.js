@@ -8,7 +8,12 @@ import ListEditingMode from '../../components/molecules/ListEditingMode';
 
 class ListEditingContainer extends React.Component {
   render() {
-    return <ListEditingMode disableListEditMode={this.props.actions.disableListEditMode} />;
+    return (
+      <ListEditingMode
+        disableListEditMode={this.props.actions.disableListEditMode}
+        handleSubmit={this.props.handleSubmit}
+      />
+    );
   }
 }
 

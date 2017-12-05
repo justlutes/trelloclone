@@ -14,6 +14,7 @@ class CreateCardContainer extends React.Component {
         archiveCard={this.props.actions.archiveCard}
         activeBoardData={this.props.activeBoardData}
         submitNewCard={this.props.actions.submitNewCard}
+        handleSubmit={this.props.handleSubmit}
       />
     );
   }
