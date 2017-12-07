@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Field, reduxForm } from 'redux-form';
 import BoardTitleInput from './BoardTitleInput';
@@ -59,6 +60,11 @@ const BoardTitleForm = ({ handleSubmit, cancelAction }) => (
     </ButtonWrapper>
   </div>
 );
+
+BoardTitleForm.propTypes = {
+  cancelAction: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+};
 
 function validate(values) {
   const errors = {};

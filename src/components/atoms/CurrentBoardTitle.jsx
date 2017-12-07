@@ -1,12 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import animation from '../../utils/Animation';
 
-export default ({ children }) => (
+const CurrentBoardTitle = ({ children }) => (
   <Wrapper>
     <Title>{children}</Title>
   </Wrapper>
 );
+
+CurrentBoardTitle.propTypes = {
+  children: PropTypes.node,
+};
+
+CurrentBoardTitle.defaultProps = {
+  children: '',
+};
 
 const Wrapper = styled.div`
   display: flex;
@@ -25,3 +34,5 @@ const Title = styled.h1`
   margin: 0 0 0 50px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 `;
+
+export default CurrentBoardTitle;

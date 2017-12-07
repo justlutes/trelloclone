@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import mapValues from 'lodash/mapValues';
 import ListItem from '../atoms/ListItem';
@@ -15,17 +16,26 @@ class ListItemsContainer extends React.Component {
   }
 
   renderListItems() {
-    const { activeBoardData } = this.props;
+    const { activeBoardData, handleDrop } = this.props;
 
     const mappedList = mapValues(activeBoardData.listItems, list => list.name);
     const mappedKeys = Object.keys(mappedList);
 
-    return mappedKeys.map((id, i) => <ListItem key={i} id={id} name={mappedList[id]} />);
+    return mappedKeys.map(id => (
+      <ListItem key={id} id={id} name={mappedList[id]} handleDrop={handleDrop} />
+    ));
   }
 
   render() {
     return <Wrapper>{this.renderListItems()}</Wrapper>;
   }
 }
+
+ListItemsContainer.propTypes = {
+  activeBoardData: PropTypes.shape({
+    listItems: PropTypes.objectOf(PropTypes.object),
+  }).isRequired,
+  handleDrop: PropTypes.func.isRequired,
+};
 
 export default ListItemsContainer;

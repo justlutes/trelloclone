@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -20,8 +21,14 @@ const DisableButton = styled.i`
   }
 `;
 
-export default ({ disable }) => (
+const DisableListEditMode = ({ disable }) => (
   <Wrapper onClick={disable}>
     <DisableButton className="material-icons">close</DisableButton>
   </Wrapper>
 );
+
+DisableListEditMode.propTypes = {
+  disable: PropTypes.func.isRequired,
+};
+
+export default DisableListEditMode;

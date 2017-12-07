@@ -21,8 +21,14 @@ class CreateCard extends React.Component {
 
   renderCards() {
     const { activeBoardData, listId } = this.props;
-    return activeBoardData.listItems[listId].cards.map((card, i) => (
-      <Card key={i} title={card.name} listId={card.listId} archiveCard={this.props.archiveCard} />
+    return activeBoardData.listItems[listId].cards.map(card => (
+      <Card
+        key={card.cardId}
+        cardId={card.cardId}
+        title={card.name}
+        listId={card.listId}
+        archiveCard={this.props.archiveCard}
+      />
     ));
   }
 
@@ -32,7 +38,7 @@ class CreateCard extends React.Component {
     return (
       <div>
         <form onSubmit={handleSubmit(this.submit)}>
-          <label>
+          <label htmlFor={`cardName_${listId}`}>
             <Field type="text" component={Input} name={`cardName_${listId}`} />
           </label>
         </form>
@@ -42,9 +48,12 @@ class CreateCard extends React.Component {
   }
 }
 
-CreateCard.proptypes = {
+CreateCard.propTypes = {
   archiveCard: PropTypes.func.isRequired,
-  activeBoardData: PropTypes.object.isRequired,
+  submitNewCard: PropTypes.func.isRequired,
+  activeBoardData: PropTypes.shape({
+    listItems: PropTypes.objectOf(PropTypes.object),
+  }).isRequired,
   listId: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };

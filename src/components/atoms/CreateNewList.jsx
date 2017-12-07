@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import animation from '../../utils/Animation';
 
@@ -7,6 +8,11 @@ const CreateNewList = ({ addList }) => (
     <Text>Add a list...</Text>
   </Wrapper>
 );
+
+CreateNewList.propTypes = {
+  addList: PropTypes.func.isRequired,
+};
+
 const Wrapper = styled.div`
   display: flex;
   margin: 20px;

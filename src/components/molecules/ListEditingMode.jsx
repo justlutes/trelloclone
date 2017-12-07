@@ -1,23 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Field } from 'redux-form';
 import Input from '../atoms/BoardTitleInput';
 import DisableListEditMode from '../atoms/DisableListEditMode';
 
-class ListEditingMode extends React.Component {
-  render() {
-    const { disableListEditMode, handleSubmit } = this.props;
-    return (
-      <ListEditingModeWrapper>
-        <form onSubmit={handleSubmit}>
-          <Field name="listItem" component={Input} type="text" placeholder="Add a list" />
-        </form>
-        <DisableListEditMode disable={disableListEditMode} />
-      </ListEditingModeWrapper>
-    );
-  }
-}
+const ListEditingMode = ({ disableListEditMode, handleSubmit }) => (
+  <ListEditingModeWrapper>
+    <form onSubmit={handleSubmit}>
+      <Field name="listItem" component={Input} type="text" placeholder="Add a list" />
+    </form>
+    <DisableListEditMode disable={disableListEditMode} />
+  </ListEditingModeWrapper>
+);
 
+ListEditingMode.propTypes = {
+  disableListEditMode: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+};
 const ListEditingModeWrapper = styled.div`
   padding: 20px 12px;
   height: 75px;

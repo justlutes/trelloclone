@@ -29,7 +29,9 @@ class ActiveBoard extends React.Component {
   }
 
   render() {
-    const { activeBoard, activeBoardData, enableListEditMode } = this.props;
+    const {
+      activeBoard, activeBoardData, enableListEditMode, handleDrop,
+    } = this.props;
 
     if (activeBoard.isFetching) {
       return <div>loading...</div>;
@@ -39,7 +41,7 @@ class ActiveBoard extends React.Component {
       <div>
         <CurrentBoardTitle>{this.getTitle()}</CurrentBoardTitle>
         <ListWrapper>
-          <ListItemsContainer activeBoardData={activeBoardData} />
+          <ListItemsContainer activeBoardData={activeBoardData} handleDrop={handleDrop} />
           {activeBoard.isEditing ? (
             <ListEditingContainer onSubmit={this.handleListSubmit} />
           ) : (
@@ -52,8 +54,17 @@ class ActiveBoard extends React.Component {
 }
 
 ActiveBoard.propTypes = {
-  activeBoard: PropTypes.object,
+  activeBoard: PropTypes.shape({
+    id: PropTypes.string,
+    title: PropTypes.string,
+    isFetching: PropTypes.bool,
+  }).isRequired,
+  activeBoardData: PropTypes.shape({
+    listItems: PropTypes.objectOf(PropTypes.object),
+  }).isRequired,
   enableListEditMode: PropTypes.func.isRequired,
+  handleDrop: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
   selectActiveBoard: PropTypes.func.isRequired,
   submitList: PropTypes.func.isRequired,
 };

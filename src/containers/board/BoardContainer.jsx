@@ -5,20 +5,15 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../../data/board/actions/CreateNewBoard';
 import BoardCollection from '../../components/organisms/BoardCollection';
 
-class BoardContainer extends React.Component {
-  render() {
-    return (
-      <BoardCollection
-        boardsCollection={this.props.boardsCollection}
-        createNewBoard={this.props.actions.createNewBoard}
-      />
-    );
-  }
-}
+const BoardContainer = ({ actions: { createNewBoard }, boardsCollection }) => (
+  <BoardCollection boardsCollection={boardsCollection} createNewBoard={createNewBoard} />
+);
 
 BoardContainer.propTypes = {
-  boardsCollection: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
+  boardsCollection: PropTypes.arrayOf(PropTypes.object).isRequired,
+  actions: PropTypes.shape({
+    createNewBoard: PropTypes.func,
+  }).isRequired,
 };
 
 const mapStateToProps = ({ boardsCollection }) => ({

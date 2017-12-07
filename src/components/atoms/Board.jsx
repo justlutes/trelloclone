@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import animation from '../../utils/Animation';
 
 const Board = ({ id, title }) => (
-  <Link to={`/board/${id}`}>
+  <Link to={`/board/${id}`} href={`/board/${id}`}>
     <BoardWrapper>
       <Title>{title}</Title>
     </BoardWrapper>

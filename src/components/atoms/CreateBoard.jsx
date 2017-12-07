@@ -8,7 +8,7 @@ const CreateBoard = ({ create }) => (
   </Wrapper>
 );
 
-CreateBoard.proptypes = {
+CreateBoard.propTypes = {
   create: PropTypes.func.isRequired,
 };
 

@@ -35,7 +35,7 @@ class ActiveCreateBoard extends React.Component {
   }
 }
 
-ActiveCreateBoard.propsTypes = {
+ActiveCreateBoard.propTypes = {
   cancelCreatingBoard: PropTypes.func.isRequired,
   submitNewBoard: PropTypes.func.isRequired,
 };

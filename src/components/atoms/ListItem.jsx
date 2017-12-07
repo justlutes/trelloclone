@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { DropTarget } from 'react-dnd';
 import ItemTypes from '../../utils/Constants';
 import animation from '../../utils/Animation';
 
 import CreateCardContainer from '../../containers/card/CreateCardContainer';
+/* eslint-disable */
 
 const dropSource = {
   drop(props, monitor) {
@@ -24,19 +26,29 @@ function collect(connect, monitor) {
   };
 }
 
+@DropTarget(ItemTypes.CARD, dropSource, collect)
 class ListItem extends React.Component {
   render() {
     const { name, id, connectDropTarget } = this.props;
 
-    return connectDropTarget(<div>
+    return connectDropTarget(
+      <div>
         <ListItemWrapper>
           <ListItemHeader>{name}</ListItemHeader>
           <hr />
           <CreateCardContainer listId={id} />
         </ListItemWrapper>
-      </div>);
+        {/* eslint-disable-next-line */}
+      </div>,
+    );
   }
 }
+
+ListItem.propTypes = {
+  connectDropTarget: PropTypes.func,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 const ListItemWrapper = styled.div`
   display: inline-block;
@@ -57,4 +69,4 @@ const ListItemHeader = styled.h4`
   font-weight: 900;
 `;
 
-export default DropTarget(ItemTypes.CARD, dropSource, collect)(ListItem);
+export default ListItem;

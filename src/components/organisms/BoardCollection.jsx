@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 `;
 
 BoardCollection.propTypes = {
-  boardsCollection: PropTypes.array.isRequired,
+  boardsCollection: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default BoardCollection;

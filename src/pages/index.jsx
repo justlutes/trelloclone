@@ -8,7 +8,7 @@ import Header from '../components/molecules/Header';
 import ActiveBoardContainer from '../containers/board/ActiveBoardContainer';
 import NotFound from './NotFound';
 
-// @DragDropContext(HTML5Backend)
+@DragDropContext(HTML5Backend)
 class App extends React.Component {
   render() {
     return (
@@ -24,4 +24,4 @@ class App extends React.Component {
   }
 }
 
-export default DragDropContext(HTML5Backend)(App);
+export default App;

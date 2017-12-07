@@ -1,5 +1,6 @@
 import find from 'lodash/find';
 import {
+  HANDLE_DROP,
   LIST_EDIT_MODE_ENABLED,
   SELECT_ACTIVE_BOARD,
   SELECT_ACTIVE_BOARD_SUCCESS,
@@ -22,4 +23,18 @@ export function selectActiveBoard(id) {
 
 export function submitList(name) {
   return dispatch => dispatch({ type: SUBMIT_LIST, payload: name });
+}
+
+export function handleDrop(cardName, cardId, listId, newListId) {
+  return (dispatch) => {
+    dispatch({
+      type: HANDLE_DROP,
+      payload: {
+        cardName,
+        cardId,
+        listId,
+        newListId,
+      },
+    });
+  };
 }

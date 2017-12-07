@@ -5,6 +5,7 @@ import { DragSource } from 'react-dnd';
 import ItemTypes from '../../utils/Constants';
 import animation from '../../utils/Animation';
 
+/* eslint-disable */
 const cardSource = {
   beginDrag({ title, cardId, listId }) {
     return {
@@ -22,21 +23,29 @@ function collect(connect, monitor) {
     isDragging: monitor.isDragging(),
   };
 }
-
+@DragSource(ItemTypes.CARD, cardSource, collect)
 class Card extends React.Component {
   render() {
-    const {
-      connectDragSource, title, archiveCard, cardId, listId,
-    } = this.props;
+    const { connectDragSource, title, archiveCard, cardId, listId } = this.props;
 
-    return connectDragSource(<div>
+    return connectDragSource(
+      <div>
         <CardWrapper>
           <CardTitle>{title}</CardTitle>
           <ArchiveTask onClick={() => archiveCard(cardId, listId)}>✓</ArchiveTask>
         </CardWrapper>
-      </div>);
+      </div>,
+    );
   }
 }
+
+Card.propTypes = {
+  archiveCard: PropTypes.func.isRequired,
+  cardId: PropTypes.string.isRequired,
+  connectDragSource: PropTypes.func,
+  listId: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
 
 const CardWrapper = styled.div`
   margin: 10px 0;
@@ -68,4 +77,4 @@ const ArchiveTask = styled.div`
   font-size: 16px;
 `;
 
-export default DragSource(ItemTypes.CARD, cardSource, collect)(Card);
+export default Card;

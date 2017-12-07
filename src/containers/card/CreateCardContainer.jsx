@@ -6,24 +6,31 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../../data/board/actions/CreateNewCard';
 import CreateCard from '../../components/organisms/CreateCard';
 
-class CreateCardContainer extends React.Component {
-  render() {
-    return (
-      <CreateCard
-        listId={this.props.listId}
-        archiveCard={this.props.actions.archiveCard}
-        activeBoardData={this.props.activeBoardData}
-        submitNewCard={this.props.actions.submitNewCard}
-        handleSubmit={this.props.handleSubmit}
-      />
-    );
-  }
-}
+const CreateCardContainer = ({
+  actions: { archiveCard, submitNewCard },
+  activeBoardData,
+  handleSubmit,
+  listId,
+}) => (
+  <CreateCard
+    listId={listId}
+    archiveCard={archiveCard}
+    activeBoardData={activeBoardData}
+    submitNewCard={submitNewCard}
+    handleSubmit={handleSubmit}
+  />
+);
 
 CreateCardContainer.propTypes = {
-  activeBoardData: PropTypes.object,
-  actions: PropTypes.object.isRequired,
+  activeBoardData: PropTypes.shape({
+    listItems: PropTypes.objectOf(PropTypes.object),
+  }).isRequired,
+  actions: PropTypes.shape({
+    archiveCard: PropTypes.func,
+    submitNewCard: PropTypes.func,
+  }).isRequired,
   listId: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ activeBoardData }) => ({

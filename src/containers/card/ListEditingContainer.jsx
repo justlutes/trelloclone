@@ -6,20 +6,15 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../../data/board/actions/ListEditing';
 import ListEditingMode from '../../components/molecules/ListEditingMode';
 
-class ListEditingContainer extends React.Component {
-  render() {
-    return (
-      <ListEditingMode
-        disableListEditMode={this.props.actions.disableListEditMode}
-        handleSubmit={this.props.handleSubmit}
-      />
-    );
-  }
-}
+const ListEditingContainer = ({ actions: { disableListEditMode }, handleSubmit }) => (
+  <ListEditingMode disableListEditMode={disableListEditMode} handleSubmit={handleSubmit} />
+);
 
 ListEditingContainer.propTypes = {
-  activeBoard: PropTypes.object,
-  actions: PropTypes.object.isRequired,
+  actions: PropTypes.shape({
+    disableListEditMode: PropTypes.func,
+  }).isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ activeBoard }) => ({
