@@ -1,5 +1,5 @@
 {
-  "extends": ["eslint-config-airbnb-base"],
+  "extends":"airbnb",
   "parser": "babel-eslint",
   "globals": {
     "document": true,
